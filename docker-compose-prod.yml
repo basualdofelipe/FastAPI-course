@@ -1,7 +1,8 @@
-version: "3"
+version: "3.8"
 services:
+
   api:
-    image: sloppynetworks/fastapi-app
+    image: basualdofelipe/fastapi-app
     ports:
       - 80:8000
     environment:
@@ -13,17 +14,19 @@ services:
       - SECRET_KEY=${SECRET_KEY}
       - ALGORITHM=${ALGORITHM}
       - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
-
     depends_on:
       - postgres
 
   postgres:
     image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
       - POSTGRES_DB=${DATABASE_NAME}
     volumes:
-      - postgres-db:/var/lib/postgresql/data
+      - db:/var/lib/postgresql/data
 
 volumes:
-  postgres-db:
+  db:
