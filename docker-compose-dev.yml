@@ -5,8 +5,6 @@ services:
     build: .
     ports:
       - 8000:8000
-    # env_file:
-    #   - ./.env
     environment:
       - DATABASE_HOSTNAME=postgres
       - DATABASE_PORT=5432
@@ -28,8 +26,6 @@ services:
     ports:
       - "5432:5432"
     environment:
-      # - DATABASE_HOST=127.0.0.1
-      # - POSTGRES_USER=feli
       - POSTGRES_PASSWORD=felicontraseña
       - POSTGRES_DB=fastapi
     volumes:
