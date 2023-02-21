@@ -5,8 +5,17 @@ services:
     build: .
     ports:
       - 8000:8000
-    env_file:
-      - ./.env
+    # env_file:
+    #   - ./.env
+    environment:
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_PASSWORD=felicontraseña
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - SECRET_KEY=09dP5e094faa6ca2556c818166bUa9563b93f7099f6f0f4caa6cB63bi8e8d3e7
+      - ALGORITHM=HS256
+      - ACCESS_TOKEN_EXPIRE_MINUTES=60
     depends_on:
       - postgres
     volumes:
